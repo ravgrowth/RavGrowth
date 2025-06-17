@@ -46,3 +46,5 @@ dist/
 
 
 .vercel
+.tmp.drivedownload/
+.tmp.driveupload/
