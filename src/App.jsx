@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Blog from './Blog';
-import Home from './Home'; // if you don't have Home.jsx yet, I'll give it below
+import Blog from './blog';
+import Home from './home'; // if you don't have Home.jsx yet, I'll give it below
 
 export default function App() {
   return (
