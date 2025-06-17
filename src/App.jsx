@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Blog from './Blog';
-import Home from './Home'; // replace with your homepage component
+import Home from './Home'; // if you don't have Home.jsx yet, I'll give it below
 
 export default function App() {
   return (
     <Router>
-      <nav style={{ padding: '16px', display: 'flex', justifyContent: 'center' }}>
-        <a href="/" style={{ margin: '0 12px' }}>Home</a>
-        <a href="/blog" style={{ margin: '0 12px' }}>Blog</a>
+      <nav style={{ padding: '16px', display: 'flex', gap: '16px', background: '#f0f0f0' }}>
+        <Link to="/">Home</Link>
+        <Link to="/blog">Blog</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
