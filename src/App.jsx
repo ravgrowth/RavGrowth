@@ -1,18 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Blog from './Blog';
-import Home from './Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './Home'
+import Blog from './Blog'
+import BlogPost from './BlogPost'
 
-export default function App() {
+function App() {
   return (
     <Router>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/blog">Blog</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </Router>
-  );
+  )
 }
+
+export default App

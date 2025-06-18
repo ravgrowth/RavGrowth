@@ -1,28 +1,27 @@
-import { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export default function Blog() {
-  const [posts, setPosts] = useState([]);
+function Blog() {
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    const files = ['post1.md', 'post2.md'];
-    Promise.all(
-      files.map(async (file) => {
-        const res = await fetch(`/posts/${file}`);
-        const text = await res.text();
-        return { file, text };
-      })
-    ).then(setPosts);
-  }, []);
+    fetch('/posts/index.json')
+      .then((res) => res.json())
+      .then(setPosts)
+  }, [])
 
   return (
-    <div style={{ padding: '32px', fontFamily: 'sans-serif' }}>
+    <div>
       <h1>RavGrowth Blog</h1>
-      {posts.map((post, i) => (
-        <article key={i} style={{ marginBottom: '40px' }}>
-          <ReactMarkdown>{post.text}</ReactMarkdown>
-        </article>
+      {posts.map((post) => (
+        <div key={post.slug}>
+          <h2>
+            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+          </h2>
+        </div>
       ))}
     </div>
-  );
+  )
 }
+
+export default Blog
