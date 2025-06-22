@@ -1,46 +1,36 @@
-// /api/send-email.js
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
 
-import AWS from 'aws-sdk'
-
-const ses = new AWS.SES({
-  region: 'us-east-1',
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+const ses = new SESClient({
+  region: 'us-east-1',   // Change if needed!
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 })
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).send('Method not allowed')
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { to } = req.body
-
-  const subject = 'Welcome to RavGrowth!'
-  const message = `
-Hi there,
-
-Thanks for signing up for RavGrowth!
-
-You will start getting updates soon.
-
-If you did not sign up, you can ignore this email.
-
-- The RavGrowth Team
-`
+  const { to, subject, message } = req.body
 
   try {
-    await ses.sendEmail({
+    const params = {
       Destination: { ToAddresses: [to] },
       Message: {
         Body: { Text: { Data: message } },
         Subject: { Data: subject }
       },
       Source: 'contact@ravgrowth.com'
-    }).promise()
+    }
 
-    res.status(200).send('Email sent')
+    const command = new SendEmailCommand(params)
+    await ses.send(command)
+
+    return res.status(200).json({ success: true })
   } catch (err) {
     console.error('SES error:', err)
-    res.status(500).send('Error sending email')
+    return res.status(500).json({ error: 'Failed to send email' })
   }
 }
