@@ -6,7 +6,7 @@ export default function Home() {
       <h1>Welcome to RavGrowth!</h1>
       <p>Your wealth-building autopilot.</p>
 
-      <h1>Test Deploy 🚀</h1>
+      <h1>Test Deploy 2 🚀</h1>
 
       <SignupForm />
 
