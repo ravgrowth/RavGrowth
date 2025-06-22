@@ -1,4 +1,4 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses'
+const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses')
 
 const ses = new SESClient({
   region: 'us-east-1',
@@ -8,7 +8,7 @@ const ses = new SESClient({
   }
 })
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
