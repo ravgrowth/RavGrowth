@@ -1,9 +1,10 @@
 {
   "functions": {
     "api/*.{js,ts}": {
-      "runtime": "@vercel/node@18"
+      "runtime": "nodejs18.x"
     }
-  },
+  }
+{
   "cleanUrls": true,
   "trailingSlash": false
 }
