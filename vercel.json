@@ -3,8 +3,7 @@
     "api/*.{js,ts}": {
       "runtime": "nodejs18.x"
     }
-  }
-{
+  },
   "cleanUrls": true,
   "trailingSlash": false
 }
