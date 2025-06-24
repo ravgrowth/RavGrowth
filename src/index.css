@@ -5,17 +5,29 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #05002e;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-purple-1: #9B5DE5; /* bright purple */
+  --color-purple-2: #6A4C93; /* medium purple */
+  --color-purple-3: #3D2C8D; /* dark purple */
+
+  --color-blue-1: #3A86FF; /* bright blue */
+  --color-blue-2: #1E60C7; /* medium blue */
+  --color-blue-3: #0A2540; /* dark blue */
+
+   /* Background + text */
+  --color-bg: #0A0A23;
+  --color-text: #FFFFFF;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-blue-1);
   text-decoration: inherit;
 }
 a:hover {
@@ -25,14 +37,28 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 2rem;
 }
 
 h1 {
+  color: var(--color-purple-1);
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+p {
+  color: var(--color-purple-2);
+}
+
+a.button {
+  background-color: var(--color-purple-1);
 }
 
 button {
@@ -42,7 +68,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-blue-3);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -52,17 +78,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
