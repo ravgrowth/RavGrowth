@@ -1,36 +1,36 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import { welcomeEmail } from "../src/emailTemplates.js"; // adjust path if needed
 
-const ses = new SESClient({
-  region: 'us-east-1',
+const sesClient = new SESClient({
+  region: "us-east-1", // or your SES region
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  },
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  }
 });
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ message: 'Method Not Allowed' });
 
-  const { to, subject, message } = req.body;
+  const { to } = req.body;
+
+  const params = {
+    Destination: { ToAddresses: [to] },
+    Message: {
+      Body: { Text: { Data: welcomeEmail.body }},
+      Subject: { Data: welcomeEmail.subject }
+    },
+    Source: "bot@ravgrowth.com" // must match verified sender
+  };
 
   try {
-    const params = {
-      Destination: { ToAddresses: [to] },
-      Message: {
-        Body: { Text: { Data: message } },
-        Subject: { Data: subject },
-      },
-      Source: 'contact@ravgrowth.com',
-    };
-
     const command = new SendEmailCommand(params);
-    await ses.send(command);
+    const response = await sesClient.send(command);
 
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error('SES error:', err);
-    return res.status(500).json({ error: 'Failed to send email' });
+    console.log("Email sent:", response);
+    return res.status(200).json({ message: 'Email sent!' });
+  } catch (error) {
+    console.error("SES send error:", error);
+    return res.status(500).json({ message: 'Email failed', error: error.message });
   }
 }
