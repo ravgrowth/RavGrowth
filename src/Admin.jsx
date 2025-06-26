@@ -7,7 +7,7 @@ export default function Admin() {
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       const email = data?.user?.email
-      if (email === 'your@email.com') setAllowed(true)
+      if (email === 'contact@ravgrowth.com') setAllowed(true)
     })
   }, [])
 
