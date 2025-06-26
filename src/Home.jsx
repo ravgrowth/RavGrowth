@@ -36,7 +36,9 @@ export default function Home() {
           color: 'var(--color-text)',
         }}
       >
-        RavBot finds wasted money and moves it to better places. You just click “yes.” Then profit.
+        RavBot finds wasted money and moves it to better places. 
+        <br />
+        You just click “yes.” Then profit.
       </p>
 
       <div style={{ marginTop: '32px' }}>
@@ -62,11 +64,6 @@ export default function Home() {
         <h2 style={{ color: 'white' }}>Latest Blog Posts</h2>
         <a href="/blog" style={{ color: '#3A86FF' }}>Go to blog →</a>
       </div>
-
-      <footer style={{ marginTop: '64px', paddingTop: '32px', borderTop: '1px solid #333', color: '#aaa' }}>
-        <p>© {new Date().getFullYear()} RavGrowth</p>
-        <p>contact@ravgrowth.com</p>
-      </footer>
     </div>
   )
 }
