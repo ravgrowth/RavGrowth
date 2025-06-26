@@ -1,13 +1,22 @@
 // SimpleLogin.jsx
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
+import { useNavigate } from 'react-router-dom'
 
 export default function SimpleLogin() {
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
+  const navigate = useNavigate()
+
+  // 🔁 Redirect if already logged in
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) navigate('/admin')
+    })
+  }, [navigate])
 
   const handleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOtp({ email }) // sends magic email link
+    const { error } = await supabase.auth.signInWithOtp({ email })
     if (!error) setSent(true)
   }
 
@@ -20,6 +29,7 @@ export default function SimpleLogin() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="you@example.com"
           />
           <button onClick={handleLogin}>Send Link</button>
         </>
