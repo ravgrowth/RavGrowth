@@ -7,8 +7,6 @@ import Contact from './Contact'
 import Admin from './Admin'
 import SimpleLogin from './SimpleLogin'
 
-
-
 function App() {
   return (
     <Router>
