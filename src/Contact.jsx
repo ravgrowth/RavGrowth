@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <div style={{ maxWidth: '600px', textAlign: 'center' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '16px', textAlign: 'center' }}>
       <h1>Contact Us</h1>
 
       <p>

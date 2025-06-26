@@ -11,21 +11,18 @@ export default function Home() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '32px',
+        padding: '16px', // was 32px
         fontFamily: 'system-ui, sans-serif',
         textAlign: 'center',
+        width: '100%',
+        maxWidth: '800px',
+        margin: '0 auto'
       }}
     >
       <img src={logo} alt="RavBot Logo" style={{ height: '200px', marginBottom: '16px' }} />
       <h1 style={{ fontSize: '2rem', color: 'var(--color-text)' }}>RavGrowth</h1>
 
-      <h1
-        style={{
-          fontSize: '3rem',
-          color: 'var(--color-purple-1)',
-          marginBottom: '16px',
-        }}
-      >
+      <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--color-purple-1)', marginBottom: '16px' }}>
         Your Money. Smarter. Automatically.
       </h1>
 
