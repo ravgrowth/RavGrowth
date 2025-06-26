@@ -47,7 +47,12 @@ export default function SignupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+  <div style={{ marginTop: '20px' }}>
+    <p style={{ color: 'white', marginBottom: '8px', fontSize: '16px'}}>
+      Be first to know about new features and Rav Growth developments.
+    </p>
+
+    <form onSubmit={handleSubmit}>
       <input
         type="email"
         value={email}
@@ -59,7 +64,7 @@ export default function SignupForm() {
       <button type="submit" style={{ padding: '10px 20px', marginLeft: '10px' }}>
         Sign Up
       </button>
-      <div style={{ marginTop: '10px' }}>{status}</div>
+      <div style={{ marginTop: '10px', color: 'white' }}>{status}</div>
     </form>
-  )
-}
+  </div>
+)}

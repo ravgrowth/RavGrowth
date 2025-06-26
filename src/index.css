@@ -12,7 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-purple-1: #9B5DE5; /* bright purple */
+  --color-purple-1: #e7d6ff; /* bright purple */
   --color-purple-2: #6A4C93; /* medium purple */
   --color-purple-3: #3D2C8D; /* dark purple */
 
@@ -48,13 +48,8 @@ body {
 }
 
 h1 {
-  color: var(--color-purple-1);
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-p {
-  color: var(--color-purple-2);
 }
 
 a.button {

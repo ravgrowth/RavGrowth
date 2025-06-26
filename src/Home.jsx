@@ -1,21 +1,24 @@
 import SignupForm from './SignupForm'
 
+const logo = '/logo.png'
+
 export default function Home() {
   return (
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: 'var(--color-bg)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         padding: '32px',
         fontFamily: 'system-ui, sans-serif',
-        color: 'var(--color-text)',
         textAlign: 'center',
       }}
     >
+      <img src={logo} alt="RavBot Logo" style={{ height: '200px', marginBottom: '16px' }} />
+      <h1 style={{ fontSize: '2rem', color: 'var(--color-text)' }}>RavGrowth</h1>
+
       <h1
         style={{
           fontSize: '3rem',
@@ -30,7 +33,7 @@ export default function Home() {
         style={{
           fontSize: '1.25rem',
           maxWidth: '600px',
-          color: 'var(--color-purple-2)',
+          color: 'var(--color-text)',
         }}
       >
         RavBot finds wasted money and moves it to better places. You just click “yes.” Then profit.
@@ -40,15 +43,30 @@ export default function Home() {
         <SignupForm />
       </div>
 
-      <div
-        style={{
-          marginTop: '40px',
-          fontSize: '0.9rem',
-          color: 'var(--color-purple-3)',
-        }}
-      >
-        Built for builders. Designed for autopilot wealth.
+      <div style={{ marginTop: '48px', maxWidth: '800px', textAlign: 'left' }}>
+        <h2 style={{ color: 'white', fontSize: '1.5rem' }}>How RavBot Works</h2>
+
+        <div style={{ marginTop: '24px' }}>
+          <h3 style={{ color: '#9B5DE5' }}>1. Connect Your Accounts</h3>
+          <p>Link your bank, credit cards, and crypto. Secure + easy.</p>
+
+          <h3 style={{ color: '#9B5DE5' }}>2. We Find Wasted Money</h3>
+          <p>RavBot finds bad interest, unused funds, and hidden fees.</p>
+
+          <h3 style={{ color: '#9B5DE5' }}>3. You Click “Yes”</h3>
+          <p>RavBot moves your money to better spots. That’s it.</p>
+        </div>
       </div>
+
+      <div style={{ marginTop: '48px' }}>
+        <h2 style={{ color: 'white' }}>Latest Blog Posts</h2>
+        <a href="/blog" style={{ color: '#3A86FF' }}>Go to blog →</a>
+      </div>
+
+      <footer style={{ marginTop: '64px', paddingTop: '32px', borderTop: '1px solid #333', color: '#aaa' }}>
+        <p>© {new Date().getFullYear()} RavGrowth</p>
+        <p>contact@ravgrowth.com</p>
+      </footer>
     </div>
   )
 }
