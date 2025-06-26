@@ -1,7 +1,7 @@
-// /api/send-bulk.js (or .ts if you're using TypeScript)
+// /api/send-bulk.js
 import { createClient } from '@supabase/supabase-js'
 import AWS from 'aws-sdk'
-import { testBulkEmail } from '../src/emailTemplates.js'
+import { testBulkEmail } from '../utils/emailTemplates.js'
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -23,22 +23,22 @@ export default async function handler(req, res) {
   const emails = data.map((row) => row.email)
 
   const sendAll = await Promise.all(
-    emails.map((to) =>
-      ses
+    emails.map((to) => {
+      console.log('Sending to:', to) // ✅ Log each email before sending
+
+      return ses
         .sendEmail({
           Source: 'contact@ravgrowth.com',
           Destination: { ToAddresses: [to] },
           Message: {
-            Subject: { Data: '🔥 Your Wealth Task is Here' },
+            Subject: { Data: testBulkEmail.subject },
             Body: {
-              Text: {
-                Data: `You signed up for RavBot wealth tasks. Here's your first one:\n\n→ Move $100 from checking to HYSA.\n\nMore coming soon.`,
-              },
+              Text: { Data: testBulkEmail.body },
             },
           },
         })
         .promise()
-    )
+    })
   )
 
   res.status(200).json({ sent: sendAll.length })

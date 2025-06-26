@@ -15,13 +15,11 @@ Talk soon,
 }
 
 export const testBulkEmail = {
-  subject: "🔥 Your RavBot Wealth Task",
+  subject: "Bulk Email Test: Mock Ravbot Feature Addition",
   body: `
-Today's smart money move:
+Soon we will have custom logic. You can build on RavBot's logic, use your own, and share others' logic for max optimization.
 
-→ Move $250 from checking to a 4.5% APY savings account.
-→ Cancel 2 subscriptions.
-→ Apply for this 0% APR credit card (auto-filled link).
+We will release it soon.
 
 RavBot makes it easy: https://app.ravgrowth.com
   `
