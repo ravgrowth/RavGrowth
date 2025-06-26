@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { supabase } from './supabaseClient'
+import { Navigate } from 'react-router-dom'
 import Home from './Home'
 import Blog from './Blog'
 import BlogPost from './BlogPost'
@@ -6,6 +9,22 @@ import Layout from './Layout'
 import Contact from './Contact'
 import Admin from './Admin'
 import SimpleLogin from './SimpleLogin'
+
+const [session, setSession] = useState(null)
+
+useEffect(() => {
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    setSession(session)
+  })
+
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    setSession(session)
+  })
+
+  return () => {
+    listener.subscription.unsubscribe()
+  }
+}, [])
 
 function App() {
   return (
@@ -16,7 +35,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={session ? <Admin /> : <Navigate to="/login" />} />
           <Route path="/login" element={<SimpleLogin />} />
         </Route>
       </Routes>
