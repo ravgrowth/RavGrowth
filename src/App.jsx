@@ -12,20 +12,22 @@ import SimpleLogin from './SimpleLogin'
 
 function App() {
   const [session, setSession] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
+      setLoading(false)
     })
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
 
-    return () => {
-      listener.subscription.unsubscribe()
-    }
+    return () => listener.subscription.unsubscribe()
   }, [])
+
+  if (loading) return <div>Loading...</div> // optional: show spinner
 
   return (
     <Router>
@@ -35,7 +37,12 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={session ? <Admin /> : <Navigate to="/login" />} />
+          <Route
+            path="/admin"
+            element={
+              session ? <Admin /> : <Navigate to="/login" />
+            }
+          />
           <Route path="/login" element={<SimpleLogin />} />
         </Route>
       </Routes>
