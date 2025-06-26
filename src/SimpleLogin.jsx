@@ -1,4 +1,3 @@
-// SimpleLogin.jsx
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
 import { useNavigate } from 'react-router-dom'
@@ -8,9 +7,9 @@ export default function SimpleLogin() {
   const [sent, setSent] = useState(false)
   const navigate = useNavigate()
 
-  // 🔁 Only redirect when a NEW login happens
   useEffect(() => {
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('🔥 AUTH CHANGE:', event, session)
       if (event === 'SIGNED_IN' && session) {
         navigate('/admin')
       }
@@ -22,6 +21,7 @@ export default function SimpleLogin() {
   const handleLogin = async () => {
     const { error } = await supabase.auth.signInWithOtp({ email })
     if (!error) setSent(true)
+    else alert(error.message)
   }
 
   return (

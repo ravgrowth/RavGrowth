@@ -1,3 +1,5 @@
+window.supabase = supabase
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { supabase } from './supabaseClient'
@@ -42,7 +44,9 @@ function App() {
           <Route
             path="/admin"
             element={
-              session ? <Admin /> : <Navigate to="/login" />
+              session
+                ? (console.log('🟢 Authenticated, rendering Admin'), <Admin />)
+                : (console.log('🔴 No session, redirecting to /login'), <Navigate to="/login" />)
             }
           />
           <Route path="/login" element={<SimpleLogin />} />
