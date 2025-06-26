@@ -8,13 +8,15 @@ export default function SimpleLogin() {
   const [sent, setSent] = useState(false)
   const navigate = useNavigate()
 
-  // 🔁 Redirect if already logged in (with cleanup)
+  // 🔁 Only redirect when a NEW login happens
   useEffect(() => {
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) navigate('/admin')
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        navigate('/admin')
+      }
     })
 
-    return () => listener.subscription.unsubscribe() // ✅ cleanup
+    return () => listener.subscription.unsubscribe()
   }, [navigate])
 
   const handleLogin = async () => {
