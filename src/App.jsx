@@ -10,23 +10,23 @@ import Contact from './Contact'
 import Admin from './Admin'
 import SimpleLogin from './SimpleLogin'
 
-const [session, setSession] = useState(null)
-
-useEffect(() => {
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    setSession(session)
-  })
-
-  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-    setSession(session)
-  })
-
-  return () => {
-    listener.subscription.unsubscribe()
-  }
-}, [])
-
 function App() {
+  const [session, setSession] = useState(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+
+    return () => {
+      listener.subscription.unsubscribe()
+    }
+  }, [])
+
   return (
     <Router>
       <Routes>
