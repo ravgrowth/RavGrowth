@@ -1,7 +1,7 @@
 // /api/send-bulk.js
 import { createClient } from '@supabase/supabase-js'
 import AWS from 'aws-sdk'
-import { testBulkEmail } from '../utils/emailTemplates.js'
+import { testBulkEmail } from '../lib/emailTemplates.js'
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -16,30 +16,30 @@ const ses = new AWS.SES({
 })
 
 export default async function handler(req, res) {
-  const { data, error } = await supabase.from('signups').select('email')
+  try {
+    const { data, error } = await supabase.from('signups').select('email')
+    if (error) throw error
 
-  if (error) return res.status(500).json({ error })
+    const emails = data.map((row) => row.email)
 
-  const emails = data.map((row) => row.email)
-
-  const sendAll = await Promise.all(
-    emails.map((to) => {
-      console.log('Sending to:', to) // ✅ Log each email before sending
-
-      return ses
-        .sendEmail({
+    const sendAll = await Promise.all(
+      emails.map((to) => {
+        console.log('Sending to:', to)
+        return ses.sendEmail({
           Source: 'contact@ravgrowth.com',
           Destination: { ToAddresses: [to] },
           Message: {
             Subject: { Data: testBulkEmail.subject },
-            Body: {
-              Text: { Data: testBulkEmail.body },
-            },
+            Body: { Text: { Data: testBulkEmail.body } },
           },
-        })
-        .promise()
-    })
-  )
+        }).promise()
+      })
+    )
 
-  res.status(200).json({ sent: sendAll.length })
+    res.status(200).json({ sent: sendAll.length })
+
+  } catch (err) {
+    console.error('🔥 EMAIL SEND ERROR:', err)
+    res.status(500).json({ error: err.message || 'Unknown error' })
+  }
 }
