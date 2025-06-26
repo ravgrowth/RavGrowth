@@ -8,6 +8,18 @@ export default function SimpleLogin() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    supabase.auth.getSession() // force token parsing from URL
+
+    const hash = window.location.hash
+      if (hash.includes('access_token')) {
+        supabase.auth._recoverSessionFromUrl(hash).then(({ data, error }) => {
+          if (data?.session) {
+            window.history.replaceState({}, document.title, '/login')
+            navigate('/admin')
+          }
+        })
+      }
+
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
       console.log('🔥 AUTH CHANGE:', event, session)
       if (event === 'SIGNED_IN' && session) {
