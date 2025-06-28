@@ -6,61 +6,140 @@ export default function Home() {
   return (
     <div
       style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '16px', // was 32px
-        fontFamily: 'system-ui, sans-serif',
-        textAlign: 'center',
         width: '100%',
-        maxWidth: '800px',
-        margin: '0 auto'
+        maxWidth: '100%',
+        padding: 'clamp(16px, 4vw, 32px)',
+        margin: '0 auto',
+        fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+        lineHeight: 1.6,
       }}
     >
-      <img src={logo} alt="RavBot Logo" style={{ height: '200px', marginBottom: '16px' }} />
-      <h1 style={{ fontSize: '2rem', color: 'var(--color-text)' }}>RavGrowth</h1>
-
-      <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'var(--color-purple-1)', marginBottom: '16px' }}>
-        Your Money. Smarter. Automatically.
-      </h1>
-
-      <p
+      <div
         style={{
-          fontSize: '1.25rem',
-          maxWidth: '600px',
-          color: 'var(--color-text)',
+          width: '100%',
+          maxWidth: '100%',
         }}
       >
-        RavBot finds wasted money and moves it to better places. 
-        <br />
-        You just click “yes.” Then profit.
-      </p>
+       <img
+          src={logo}
+          alt="RavBot Logo"
+          style={{
+            width: 'clamp(150px, 40vw, 300px)',
+            display: 'block',
+            margin: '0 auto 24px',
+          }}
+        />
 
-      <div style={{ marginTop: '32px' }}>
-        <SignupForm />
-      </div>
 
-      <div style={{ marginTop: '48px', maxWidth: '800px', textAlign: 'left' }}>
-        <h2 style={{ color: 'white', fontSize: '1.5rem' }}>How RavBot Works</h2>
+        <h1
+          style={{
+            fontSize: 'clamp(2rem, 6vw, 2.75rem)',
+            textAlign: 'center',
+            marginBottom: '8px',
+          }}
+        >
+          RavBot is being built as you read this...
+        </h1>
 
-        <div style={{ marginTop: '24px' }}>
-          <h3 style={{ color: '#9B5DE5' }}>1. Connect Your Accounts</h3>
-          <p>Link your bank, credit cards, and crypto. Secure + easy.</p>
+        <h2
+          style={{
+            fontSize: 'clamp(1.5rem, 5vw, 2.25rem)',
+            color: 'var(--color-purple-1)',
+            textAlign: 'center',
+            marginBottom: '16px',
+          }}
+        >
+          Your Money. Smarter.<br />Automatically.
+        </h2>
 
-          <h3 style={{ color: '#9B5DE5' }}>2. We Find Wasted Money</h3>
-          <p>RavBot finds bad interest, unused funds, and hidden fees.</p>
+        <p
+          style={{
+            fontSize: 'clamp(1rem, 4vw, 1.25rem)',
+            textAlign: 'center',
+            lineHeight: 1.4,
+          }}
+        >
+          RavBot finds wasted money and moves it to better places.<br />
+          You just click “yes.” Then profit.
+        </p>
 
-          <h3 style={{ color: '#9B5DE5' }}>3. You Click “Yes”</h3>
-          <p>RavBot moves your money to better spots. That’s it.</p>
+       <div
+        style={{
+          marginTop: '48px',
+          textAlign: 'center',
+          padding: 'clamp(24px, 4vw, 32px)',
+          fontSize: 'clamp(1.1rem, 4vw, 1.3rem)',
+          lineHeight: 1.6,
+        }}
+      >
+        <p style={{ marginBottom: '16px', fontSize: 'clamp(1.1rem, 4vw, 1.8rem)' }}>
+          Be first to know about new features <br/> and Rav Growth developments.
+        </p>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '12px',
+            width: '100%',
+            maxWidth: '400px',
+            margin: '0 auto',
+          }}
+        >
+          <SignupForm />
         </div>
       </div>
 
-      <div style={{ marginTop: '48px' }}>
-        <h2 style={{ color: 'white' }}>Latest Blog Posts</h2>
-        <a href="/blog" style={{ color: '#3A86FF' }}>Go to blog →</a>
+      <div
+        style={{
+          marginTop: '64px',
+          padding: 'clamp(24px, 6vw, 48px)',
+          textAlign: 'center',
+          backgroundColor: 'rgba(255, 255, 255, 0.02)',
+          borderRadius: '12px',
+        }}
+      >
+        <h2
+          style={{
+            fontSize: 'clamp(2rem, 6vw, 2.5rem)',
+            fontWeight: 700,
+            marginBottom: '32px',
+          }}
+        >
+          How RavBot Works
+        </h2>
+
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '32px',
+            maxWidth: '600px',
+            margin: '0 auto',
+          }}
+        >
+          <div style={{ lineHeight: 1.6 }}>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#9B5DE5' }}>1.</div>
+            <h3 style={{ margin: '8px 0', fontSize: '1.5rem' }}>Connect Your Accounts</h3>
+            <p style={{ fontSize: '1.2rem' }}>Bank, credit, crypto - securely linked in seconds.</p>
+          </div>
+
+          <div style={{ lineHeight: 1.6 }}>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#9B5DE5' }}>2.</div>
+            <h3 style={{ margin: '8px 0', fontSize: '1.5rem' }}>We Find Wasted Money</h3>
+            <p style={{ fontSize: '1.2rem' }}>Bad APY, hidden fees, idle cash? RavBot sees it all.</p>
+          </div>
+
+          <div style={{ lineHeight: 1.6 }}>
+            <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#9B5DE5' }}>3.</div>
+            <h3 style={{ margin: '8px 0', fontSize: '1.5rem' }}>{'You Click "Yes"'}</h3>
+            <p style={{ fontSize: '1.2rem' }}>RavBot moves your money. You grow automatically.</p>
+           </div>
+        </div>
       </div>
     </div>
+  </div>
   )
 }

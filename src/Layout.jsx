@@ -17,7 +17,9 @@ export default function Layout() {
           padding: '20px',
           borderBottom: '1px solid #333',
           display: 'flex',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          padding: '16px',
           alignItems: 'center',
           flexWrap: 'wrap', // ✅ wraps on mobile
           gap: '16px',      // ✅ smaller gap for small screens
