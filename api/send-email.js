@@ -1,5 +1,5 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import { welcomeEmail } from "../src/emailTemplates.js"; // adjust path if needed
+import { welcomeEmail } from "../lib/emailTemplates.js"; // adjust path if needed
 
 const sesClient = new SESClient({
   region: "us-east-1", // or your SES region
