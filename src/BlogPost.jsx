@@ -17,10 +17,15 @@ function BlogPost() {
   }, [slug])
 
   return (
-    <div>
+  <main style={{ padding: '1rem', maxWidth: '720px', margin: 'auto' }}>
+    {content ? (
       <ReactMarkdown>{content}</ReactMarkdown>
-    </div>
-  )
+    ) : (
+      <p>Loading...</p>
+    )}
+  </main>
+)
+
 }
 
 export default BlogPost

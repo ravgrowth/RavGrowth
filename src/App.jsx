@@ -1,21 +1,23 @@
-window.supabase = supabase
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate
+} from 'react-router-dom'
+import { useEffect, useState, lazy, Suspense } from 'react'
+import supabase from './supabaseClient'
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import { supabase } from './supabaseClient'
-import { Navigate } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import Home from './Home'
-import Blog from './Blog'
-import BlogPost from './BlogPost'
-import Layout from './Layout'
-import Contact from './Contact'
-import Admin from './Admin'
-import SimpleLogin from './SimpleLogin'
+// Lazy load everything
+const Home = lazy(() => import('./Home'))
+const Blog = lazy(() => import('./Blog'))
+const BlogPost = lazy(() => import('./BlogPost'));
+const Layout = lazy(() => import('./Layout'))
+const Contact = lazy(() => import('./Contact'))
+const Admin = lazy(() => import('./Admin'))
+const SimpleLogin = lazy(() => import('./SimpleLogin'))
 
-function App() {
-   const [session, setSession] = useState(null)
-   const [loading, setLoading] = useState(true)
+function AppWrapper() {
+  const [session, setSession] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -31,29 +33,42 @@ function App() {
     return () => listener.subscription.unsubscribe()
   }, [])
 
-  if (loading) return <div>Loading...</div> // optional: show spinner
+  if (loading) return <div>Loading...</div>
+
+  const routes = [
+    {
+      element: <Layout />,
+      children: [
+        { path: '/', element: <Home /> },
+        { path: '/blog', element: <Blog /> },
+        { path: '/blog/:slug', element: <BlogPost /> },
+        { path: '/contact', element: <Contact /> },
+        {
+          path: '/admin',
+          element: session ? (
+            (console.log('🟢 Authenticated'), <Admin />)
+          ) : (
+            (console.log('🔴 No session'), <Navigate to="/login" />)
+          )
+        },
+        { path: '/login', element: <SimpleLogin /> },
+        { path: '*', element: <div>404 Not Found</div> }
+      ]
+    }
+  ]
+
+  const router = createBrowserRouter(routes, {
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true
+    }
+  })
 
   return (
-    <Router>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/admin"
-            element={
-              session
-                ? (console.log('🟢 Authenticated, rendering Admin'), <Admin />)
-                : (console.log('🔴 No session, redirecting to /login'), <Navigate to="/login" />)
-            }
-          />
-          <Route path="/login" element={<SimpleLogin />} />
-        </Route>
-      </Routes>
-    </Router>
+    <Suspense fallback={<div>Loading page...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   )
 }
 
-export default App
+export default AppWrapper

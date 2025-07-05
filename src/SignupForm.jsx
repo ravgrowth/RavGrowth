@@ -1,10 +1,5 @@
 import { useState } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)
+import supabase from './supabaseClient' // fix path if needed
 
 export default function SignupForm() {
   const [email, setEmail] = useState('')
@@ -48,9 +43,6 @@ export default function SignupForm() {
 
   return (
   <div style={{ marginTop: '20px' }}>
-    <p style={{ color: 'white', marginBottom: '8px', fontSize: '16px'}}>
-      Be first to know about new features and Rav Growth developments.
-    </p>
 
     <form onSubmit={handleSubmit}>
       <input
@@ -59,7 +51,14 @@ export default function SignupForm() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Your email"
         required
-        style={{ padding: '10px', fontSize: '16px', width: '300px' }}
+        style={{
+          padding: '10px',
+          fontSize: '16px',
+          width: '300px',
+          backgroundColor: 'black',
+          color: 'white',
+          border: '1px solid white'
+        }}
       />
       <button type="submit" style={{ padding: '10px 20px', marginLeft: '10px' }}>
         Sign Up

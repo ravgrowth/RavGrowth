@@ -32,10 +32,10 @@ export default function Layout() {
               width: '100%',
             }}
           >
-            <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
-            <a href="https://app.ravgrowth.com" target="_blank" rel="noopener noreferrer">RavBot</a>
-            <Link to="/contact">Contact</Link>
+            <Link to="/" style={{ color: 'white' }}>Home</Link>
+            <Link to="/blog" style={{ color: 'white' }}>Blog</Link>
+            <a href="https://app.ravgrowth.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>RavBot</a>
+            <Link to="/contact" style={{ color: 'white' }}>Contact</Link>
           </nav>
         </header>
 
