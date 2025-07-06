@@ -24,6 +24,9 @@ export default async function handler(req, res) {
   };
 
   try {
+    console.log("Sending FROM:", params.Source)
+    console.log("Sending TO:", email)
+
     const command = new SendEmailCommand(params);
     const response = await sesClient.send(command);
 
