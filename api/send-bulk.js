@@ -5,10 +5,9 @@ import { testBulkEmail } from '../lib/emailTemplates.js'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
+  process.env.VITE_SUPABASE_URL,
+  process.env.VITE_SUPABASE_ANON_KEY
 )
-
 
 AWS.config.update({ region: 'us-east-1' })
 
