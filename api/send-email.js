@@ -10,9 +10,15 @@ const sesClient = new SESClient({
 });
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ message: 'Method Not Allowed' });
+  if (req.method !== 'POST') return res.status(405).json({ message: 'Method Not Allowed' })
 
-  const { email } = req.body;
+  const { email } = req.body
+  console.log("👀 Email in body:", email)
+
+  if (!email || !email.includes('@')) {
+    console.error("❌ Invalid email:", email)
+    return res.status(400).json({ message: 'Invalid recipient email' })
+  }
 
   const params = {
     Destination: { ToAddresses: [email] },
@@ -20,20 +26,17 @@ export default async function handler(req, res) {
       Body: { Text: { Data: welcomeEmail.body }},
       Subject: { Data: welcomeEmail.subject }
     },
-    Source: "bot@ravgrowth.com" // must match verified sender
-  };
+    Source: "bot@ravgroteo.com" // Make sure this is verified in SES
+  }
 
   try {
-    console.log("Sending FROM:", params.Source)
-    console.log("Sending TO:", email)
-
-    const command = new SendEmailCommand(params);
-    const response = await sesClient.send(command);
-
-    console.log("Email sent:", response);
-    return res.status(200).json({ message: 'Email sent!' });
+    const command = new SendEmailCommand(params)
+    const response = await sesClient.send(command)
+    console.log("✅ Email sent:", response)
+    return res.status(200).json({ message: 'Email sent!' })
   } catch (error) {
-    console.error("SES send error:", error);
-    return res.status(500).json({ message: 'Email failed', error: error.message });
+    console.error("🔥 SES send error:", error)
+    return res.status(500).json({ message: 'Email failed', error: error.message })
   }
 }
+

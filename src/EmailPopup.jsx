@@ -32,8 +32,9 @@ export default function EmailPopup({ delay = 5000 }) {
         const res = await fetch('/api/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email })
+            body: JSON.stringify({ email }) // ← must match backend
         })
+
 
         const result = await res.json()
         console.log('📤 Email API response:', result)
