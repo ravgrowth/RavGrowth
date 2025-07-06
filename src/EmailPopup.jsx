@@ -65,8 +65,26 @@ export default function EmailPopup({ delay = 5000 }) {
         width: '90%',
         textAlign: 'center',
         color: '#fff',
-        boxShadow: '0 0 24px rgba(255, 255, 255, 0.1)'
+        boxShadow: '0 0 24px rgba(255, 255, 255, 0.1)',
+        position: 'relative'
       }}>
+    <button
+        onClick={() => setShow(false)}
+        style={{
+            position: 'absolute',
+            top: '12px',
+            right: '16px',
+            background: 'transparent',
+            border: 'none',
+            fontSize: '1.5rem',
+            color: '#fff',
+            cursor: 'pointer'
+        }}
+        aria-label="Close popup"
+        >
+    X
+    </button>
+
         {submitted ? (
           <p>✅ Thanks! You’re on the list.</p>
         ) : (
@@ -78,7 +96,11 @@ export default function EmailPopup({ delay = 5000 }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@email.com"
               required
-              style={{ width: '95%', padding: '0.5rem', marginTop: '1rem' }}
+              style={{ width: '95%', 
+                padding: '0.5rem', 
+                marginTop: '1rem',
+                backgroundColor: '#000',
+                color: '#fff', }}
             />
             <br />
             <button type="submit" style={{
