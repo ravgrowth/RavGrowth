@@ -26,13 +26,9 @@ export default function SignupForm() {
     const res = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        to: email,
-        subject: 'Welcome to RavGrowth!',
-        message: 'Thanks for signing up — your wealth journey starts now!'
-      })
+      body: JSON.stringify({ email })
     })
-
+    
     if (res.ok) {
       setStatus('Signup complete! Check your inbox.')
       setEmail('')

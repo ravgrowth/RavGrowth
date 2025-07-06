@@ -28,6 +28,8 @@ export default function EmailPopup({ delay = 5000 }) {
 
         console.log('✅ Saved to Supabase')
 
+        console.log("📨 Sending welcome email to:", email)
+
         // Call welcome email endpoint
         const res = await fetch('/api/send-email', {
             method: 'POST',
