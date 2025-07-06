@@ -161,7 +161,7 @@ export default function Home() {
       </div>
 
     </section>
-    <EmailPopup delay={1} />
+    <EmailPopup delay={5000} />
     </div>
   );
 }
