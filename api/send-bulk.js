@@ -33,7 +33,7 @@ export default async function handler(req, res) {
               try {
                 console.log('📤 Sending to:', to)
                 return await ses.sendEmail({
-                  Source: 'contact@ravgrowth.com',
+                  Source: 'bot@ravgrowth.com',
                   Destination: { ToAddresses: [to] },
                   Message: {
                     Subject: { Data: testBulkEmail.subject },
