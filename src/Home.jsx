@@ -21,7 +21,7 @@ export default function Home() {
         alt="RavBot visual"
         style={{
           width: '100%',
-          maxWidth: '600px',
+          maxWidth: '300px',
           height: 'auto',
           marginBottom: '32px',
           borderRadius: '12px',
@@ -57,7 +57,7 @@ export default function Home() {
       </a>
 
       <p style={{ marginBottom: '12px', fontSize: '1rem', color: '#ccc' }}>
-        Not ready yet? Join the newsletter and we’ll help you grow smarter:
+        Not ready yet? Get our best money tricks 1x/week — from someone who actually built the tool:
       </p>
 
       <div style={{ width: '100%', maxWidth: '400px' }}>
@@ -107,9 +107,36 @@ export default function Home() {
           borderRadius: '10px',
         }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: '#a6e22e' }}>2. RavBot Analyzes</h3>
-          <p className="hero-paragraph">
-            It reads your income, spending, debt, and more — then figures out exactly what’s hurting or helping your money right now.
+        <p className="hero-paragraph">
+            It reads your income, spending, debt, and more — then figures out exactly what’s hurting or helping your money right now. <br></br>All using a very clever combination of AI and hard code.
           </p>
+            <div style={{
+              backgroundColor: "#0b0b0b",
+              border: "1px solid #222",
+              borderRadius: "6px",
+              padding: "1rem",
+              fontFamily: "monospace",
+              fontSize: "0.85rem",
+              lineHeight: "1.4",
+              marginTop: "1rem",
+              whiteSpace: "pre",
+              textAlign: "left",
+              color: "#ccc",
+              maxWidth: "700px",
+              marginInline: "auto"
+            }}>
+              <span style={{ color: "#66d9ef" }}>if</span> (<span style={{ color: "#a6e22e" }}>user.creditCardInterest</span> &gt; <span style={{ color: "#ae81ff" }}>0</span>) {'{'}{'\n'}
+              &nbsp;&nbsp;<span style={{ color: "#f92672" }}>suggest</span>(<span style={{ color: "#e6db74" }}>"Lower-interest card"</span>);{'\n'}
+              {'}'}{'\n\n'}
+              <span style={{ color: "#66d9ef" }}>if</span> (<span style={{ color: "#a6e22e" }}>user.subscriptions.lastUsed</span> &gt; <span style={{ color: "#ae81ff" }}>365</span>) {'{'}{'\n'}
+              &nbsp;&nbsp;<span style={{ color: "#f92672" }}>suggest</span>(<span style={{ color: "#e6db74" }}>"Cancel unused subscription"</span>);{'\n'}
+              {'}'}{'\n\n'}
+              <span style={{ color: "#66d9ef" }}>if</span> (<span style={{ color: "#a6e22e" }}>user.savingsRate</span> &lt; <span style={{ color: "#ae81ff" }}>0.1</span>) {'{'}{'\n'}
+              &nbsp;&nbsp;<span style={{ color: "#f92672" }}>suggest</span>(<span style={{ color: "#e6db74" }}>"Automate savings"</span>);{'\n'}
+              {'}'}
+            </div>
+
+
         </div>
 
         {/* Step 3 */}

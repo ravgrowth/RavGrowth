@@ -19,22 +19,33 @@ export default async function handler(req, res) {
   try {
     const { data, error } = await supabase.from('signups').select('email')
     if (error) throw error
+      if (!data || !Array.isArray(data)) {
+        throw new Error('No data returned from signups table')
+      }
+        console.log('✅ Emails pulled from Supabase:', data)
 
-    const emails = data.map((row) => row.email)
 
-    const sendAll = await Promise.all(
-      emails.map((to) => {
-        console.log('Sending to:', to)
-        return ses.sendEmail({
-          Source: 'contact@ravgrowth.com',
-          Destination: { ToAddresses: [to] },
-          Message: {
-            Subject: { Data: testBulkEmail.subject },
-            Body: { Text: { Data: testBulkEmail.body } },
-          },
-        }).promise()
-      })
-    )
+          const emails = [...new Set(data.map(row => row.email))] // removes duplicates
+
+          const sendAll = await Promise.all(
+            emails.map(async (to) => {
+              try {
+                console.log('📤 Sending to:', to)
+                return await ses.sendEmail({
+                  Source: 'contact@ravgrowth.com',
+                  Destination: { ToAddresses: [to] },
+                  Message: {
+                    Subject: { Data: testBulkEmail.subject },
+                    Body: { Text: { Data: testBulkEmail.body } },
+                  },
+                }).promise()
+              } catch (err) {
+                console.error('❌ Failed to send to', to, err.message)
+                return null
+              }
+            })
+          )
+
 
     res.status(200).json({ sent: sendAll.length })
 
