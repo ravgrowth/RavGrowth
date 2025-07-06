@@ -12,10 +12,10 @@ const sesClient = new SESClient({
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method Not Allowed' });
 
-  const { to } = req.body;
+  const { email } = req.body;
 
   const params = {
-    Destination: { ToAddresses: [to] },
+    Destination: { ToAddresses: [email] },
     Message: {
       Body: { Text: { Data: welcomeEmail.body }},
       Subject: { Data: welcomeEmail.subject }

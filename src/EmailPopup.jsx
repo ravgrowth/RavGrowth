@@ -58,12 +58,14 @@ export default function EmailPopup({ delay = 5000 }) {
       zIndex: 9999
     }}>
       <div style={{
-        background: '#fff',
+        background: '#111',
         padding: '2rem',
         borderRadius: '12px',
         maxWidth: '400px',
         width: '90%',
-        textAlign: 'center'
+        textAlign: 'center',
+        color: '#fff',
+        boxShadow: '0 0 24px rgba(255, 255, 255, 0.1)'
       }}>
         {submitted ? (
           <p>✅ Thanks! You’re on the list.</p>
@@ -80,12 +82,12 @@ export default function EmailPopup({ delay = 5000 }) {
             />
             <br />
             <button type="submit" style={{
-              marginTop: '1rem',
-              padding: '0.5rem 1rem',
-              background: '#000',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '6px'
+                marginTop: '1rem',
+                padding: '0.5rem 1rem',
+                background: '#007aff',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '6px'
             }}>
               Sign up
             </button>
