@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       Body: { Text: { Data: welcomeEmail.body }},
       Subject: { Data: welcomeEmail.subject }
     },
-    Source: "bot@ravgroteo.com" // Make sure this is verified in SES
+    Source: "bot@ravgrowth.com" // Make sure this is verified in SES
   }
 
   try {
