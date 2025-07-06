@@ -78,15 +78,16 @@ export default function EmailPopup({ delay = 5000 }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@email.com"
               required
-              style={{ width: '100%', padding: '0.5rem', marginTop: '1rem' }}
+              style={{ width: '95%', padding: '0.5rem', marginTop: '1rem' }}
             />
             <br />
             <button type="submit" style={{
+                width: '100%',
+                padding: '0.5rem',
                 marginTop: '1rem',
-                padding: '0.5rem 1rem',
-                background: '#007aff',
+                backgroundColor: '#000',
                 color: '#fff',
-                border: 'none',
+                border: '1px solid #333',
                 borderRadius: '6px'
             }}>
               Sign up
