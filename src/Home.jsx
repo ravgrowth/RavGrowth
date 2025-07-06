@@ -1,4 +1,5 @@
 import SignupForm from './SignupForm';
+import EmailPopup from './EmailPopup';
 
 export default function Home() {
   return (
@@ -160,6 +161,7 @@ export default function Home() {
       </div>
 
     </section>
+    <EmailPopup delay={5000} />
     </div>
   );
 }

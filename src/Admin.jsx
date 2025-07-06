@@ -31,7 +31,7 @@ export default function Admin() {
         const result = await res.json()
         alert(`✅ Sent "${result.subject || 'your email'}" to ${result.sent || 0} emails successfully.`)
       }}>
-        Send bulk email
+        Send all the bulk  emailssssss all the ppl on the list in supabase. and itll use the emailtemplates.js emails
       </button>
     </div>
   )
