@@ -46,10 +46,10 @@ export default async function handler(req, res) {
               }
             })
           )
-
-
-    res.status(200).json({ sent: sendAll.length })
-
+    res.status(200).json({
+      sent: sendAll.length,
+      subject: testBulkEmail.subject
+    })
   } catch (err) {
     console.error('🔥 EMAIL SEND ERROR:', err)
     res.status(500).json({ error: err.message || 'Unknown error' })
