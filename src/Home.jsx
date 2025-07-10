@@ -33,6 +33,10 @@ export default function Home() {
         RavBot
       </h1>
 
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '16px', color: '#00d8ff' }}>
+        In development as you read this. <br></br><br></br> Sign up for the email list <br></br> to be notified as soon as it's ready.
+      </h1>
+
       <p style={{ fontSize: '1.5rem', maxWidth: '600px', marginBottom: '32px' }}>
         Throw money at it, and it makes you more.
       </p>
