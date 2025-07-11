@@ -45,7 +45,7 @@ export default function Home() {
         Most users find $200–$1,000/month in dead money we revive and use for growth.
       </p>
       <a
-        href="/app"
+        href="https://app.ravgrowth.com"
         style={{
           backgroundColor: '#007aff',
           color: 'white',
