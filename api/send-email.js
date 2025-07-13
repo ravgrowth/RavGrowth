@@ -9,6 +9,8 @@ const sesClient = new SESClient({
   }
 });
 
+// this whole thing is how to send the welcome email
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method Not Allowed' })
 
@@ -23,10 +25,15 @@ export default async function handler(req, res) {
   const params = {
     Destination: { ToAddresses: [email] },
     Message: {
-      Body: { Text: { Data: welcomeEmail.body }},
-      Subject: { Data: welcomeEmail.subject }
+      Subject: { Data: welcomeEmail.subject, Charset: "UTF-8" },
+      Body: {
+        Html: {
+          Charset: "UTF-8",
+          Data: welcomeEmail.body
+        }
+      }
     },
-    Source: "bot@ravgrowth.com" // Make sure this is verified in SES
+    Source: "bot@ravgrowth.com"
   }
 
   try {
