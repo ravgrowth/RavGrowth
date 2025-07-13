@@ -52,6 +52,7 @@ function AppWrapper() {
           )
         },
         { path: '/login', element: <SimpleLogin /> },
+        { path: '/signup', element: <Navigate to="/login" replace /> },
         { path: '*', element: <div>404 Not Found</div> }
       ]
     }
