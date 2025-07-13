@@ -37,13 +37,11 @@ export default function Home() {
         In development as you read this. <br></br><br></br> Sign up for the email list <br></br> to be notified as soon as it's ready.
       </h1>
 
-      <p style={{ fontSize: '1.5rem', maxWidth: '600px', marginBottom: '32px' }}>
-        Throw money at it, and it makes you more.
-      </p>
+     <p style={{ fontSize: '1.25rem', marginBottom: '16px' }}>
+      Most users find <span style={{ fontWeight: 'bold', color: 'cyan' }}>$200–$1,000/month</span><br />
+      in dead money we revive and use for your growth.
+    </p>
 
-      <p style={{ fontSize: '1.25rem', marginBottom: '16px' }}>
-        Most users find $200–$1,000/month in dead money we revive and use for growth.
-      </p>
       <a
         href="https://app.ravgrowth.com"
         style={{
@@ -58,18 +56,17 @@ export default function Home() {
           display: 'inline-block',
         }}
       >
-        Get Started Now
+        Sign Up Now
       </a>
 
       <p style={{ marginBottom: '12px', fontSize: '1rem', color: '#ccc' }}>
-        Not ready yet? Get our best money tricks 1x/week — from someone who actually built the tool:
+        Not ready yet? Get our best money tricks, tools, and information 1x/week — <br></br>
+        from Tyler, the founder who actually built the tool:
       </p>
 
       <div style={{ width: '100%', maxWidth: '400px' }}>
         <SignupForm />
       </div>
-
-
 
       {/* How It Works Section */}
     <section id="how-it-works" style={{
