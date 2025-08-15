@@ -13,8 +13,8 @@ export default function Newsletter() {
     setStatus("Saving...");
 
     const { error } = await supabase
-      .from("signups")
-      .insert([{ email, source: "newsletter", ua: navigator.userAgent }]);
+        .from('signups')
+        .insert([{ email, source: 'newsletter' }])
 
     if (error) {
       console.error("Supabase insert error:", error);
