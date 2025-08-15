@@ -1,3 +1,5 @@
+// emailpopup.jsx
+// purpose: popup on ravgrowth home page saying "sign up email"
 import { useEffect, useState } from 'react'
 import supabase from './supabaseClient'
 

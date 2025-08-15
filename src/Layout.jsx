@@ -36,6 +36,7 @@ export default function Layout() {
             <Link to="/blog" style={{ color: 'white' }}>Blog</Link>
             <a href="https://app.ravgrowth.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>RavBot</a>
             <Link to="/contact" style={{ color: 'white' }}>Contact</Link>
+            <Link to="/newsletter" style={{ color: 'white' }}>Newsletter</Link>
           </nav>
         </header>
 

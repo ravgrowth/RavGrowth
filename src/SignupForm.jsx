@@ -1,3 +1,5 @@
+// signupform.jsx
+// purpose: get emails into supabase so i can email ppl 
 import { useState } from 'react'
 import supabase from './supabaseClient' // fix path if needed
 

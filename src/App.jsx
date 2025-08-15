@@ -14,6 +14,7 @@ const Layout = lazy(() => import('./Layout'))
 const Contact = lazy(() => import('./Contact'))
 const Admin = lazy(() => import('./Admin'))
 const SimpleLogin = lazy(() => import('./SimpleLogin'))
+const Newsletter = lazy(() => import('./Newsletter'))
 
 function AppWrapper() {
   const [session, setSession] = useState(null)
@@ -52,7 +53,8 @@ function AppWrapper() {
           )
         },
         { path: '/login', element: <SimpleLogin /> },
-        { path: '*', element: <div>404 Not Found</div> }
+        { path: '*', element: <div>404 Not Found</div> },
+        { path: '/newsletter', element: <Newsletter /> },
       ]
     }
   ]
