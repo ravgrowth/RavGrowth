@@ -13,13 +13,15 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics (GA4) tag: tracks traffic for ravgrowth.com + subdomains -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLBP6P27Z5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-PLBP6P27Z5');
+      gtag('config', 'G-PLBP6P27Z5', {
+        cookie_flags: 'SameSite=None;Secure'
+      });
     </script>
   </head>
   <body>
