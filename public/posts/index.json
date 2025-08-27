@@ -1,10 +1,16 @@
 [
   {
     "slug": "what-is-rav-growth",
-    "title": "What is RavGrowth?"
+    "title": "What is RavGrowth?",
+    "description": "Rav Growth isn’t a course or theory. It’s your wealth engine — an AI system that handles money for you.",
+    "image": "/posts/images/rav-growth.webp",
+    "date": "2025-08-26"
   },
   {
     "slug": "passive-income-fake-or-nah",
-    "title": "Can You Really Make Money Online, Passively?"
+    "title": "Can You Really Make Money Online, Passively?",
+    "description": "Passive income isn’t magic. It’s about frontloading systems that earn while you sleep. Here’s how RavGrowth makes it real.",
+    "image": "/posts/images/passive-income.webp",
+    "date": "2025-08-25"
   }
 ]

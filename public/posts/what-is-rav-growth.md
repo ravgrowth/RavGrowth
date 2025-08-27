@@ -1,3 +1,10 @@
+---
+title: "What is RavGrowth?"
+description: "Rav Growth isn’t a course or a theory. It’s your wealth engine — an AI system that handles money for you."
+image: "/posts/images/rav-growth.webp"
+date: "2025-08-26"
+---
+
 # What is Rav Growth?
 
 **Rav Growth isn’t a course. It’s not a community. It’s not theory.**

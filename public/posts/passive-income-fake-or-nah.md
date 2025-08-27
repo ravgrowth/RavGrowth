@@ -1,3 +1,10 @@
+---
+title: "Can You Really Make Money Online, Passively?"
+description: "Passive income isn't magic. It's about frontloading systems that earn while you sleep."
+image: "/posts/images/passive-income.webp"
+date: "2025-08-25"
+---
+
 # Is Passive Income Fake... or Nah?
 
 Some people say it’s a scam. Others say it changed their life.
