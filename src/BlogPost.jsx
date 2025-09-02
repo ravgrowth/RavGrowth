@@ -50,6 +50,9 @@ function BlogPost() {
           }
         />
 
+        {/* Canonical */}
+        <link rel="canonical" href={`https://ravgrowth.com/blog/${slug}`} />
+
         {/* Open Graph */}
         <meta property="og:title" content={meta.title || "RavGrowth Blog Post"} />
         <meta
@@ -69,7 +72,11 @@ function BlogPost() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {content ? <ReactMarkdown>{content}</ReactMarkdown> : <p>Loading...</p>}
+      {content ? (
+        <ReactMarkdown skipHtml>{content}</ReactMarkdown>
+      ) : (
+        <p>Loading...</p>
+      )}
     </main>
   );
 }
