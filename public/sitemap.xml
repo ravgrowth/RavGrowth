@@ -1,3 +1,16 @@
+<!-- todo
+ask ai to fix it
+cuz it keep saying "do you want to do (thing that i want to have happen)"
+like
+Add <lastmod> (last modified date) so Google knows when content changes - ai
+and
+Do you want me to show you how to 
+auto-insert the <lastmod> dates 
+inside your generate-sitemap.js 
+so you don’t have to update it by hand? - ai
+do this stuff
+ -->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
