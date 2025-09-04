@@ -15,6 +15,7 @@ const Contact = lazy(() => import('./Contact'))
 const Admin = lazy(() => import('./Admin'))
 const SimpleLogin = lazy(() => import('./SimpleLogin'))
 const Newsletter = lazy(() => import('./Newsletter'))
+const About = lazy(() => import('./About'))
 
 function AppWrapper() {
   const [session, setSession] = useState(null)
@@ -43,6 +44,7 @@ function AppWrapper() {
         { path: '/', element: <Home /> },
         { path: '/blog', element: <Blog /> },
         { path: '/blog/:slug', element: <BlogPost /> },
+        { path: '/about', element: <About /> },
         { path: '/contact', element: <Contact /> },
         {
           path: '/admin',
