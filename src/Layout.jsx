@@ -57,6 +57,7 @@ export default function Layout() {
         >
           <Link to="/" style={{ color: "white" }}>Home</Link>
           <Link to="/blog" style={{ color: "white" }}>Blog</Link>
+          <Link to="/about" style={{ color: "white" }}>About</Link>
           <a
             href="https://app.ravgrowth.com"
             target="_blank"
