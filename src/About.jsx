@@ -21,6 +21,14 @@ export default function About() {
       >
         <h1>About Rav Growth</h1>
         <p>
+          Planed todo as of sep 5 2025:
+          This looks very AI generated to me. I have a much better version in my journal. 
+          When it's refined, this version will be replaced. 
+          For now, this generally gets the message across.
+          Also try RavBot!
+          - Tyler (ravgrowth.com dev)
+        </p>
+        <p>
           Rav Growth is building the world’s financial operating system.{' '}
           <br />Our mission is simple: give everyone the same financial edge as
           billion-dollar companies.
